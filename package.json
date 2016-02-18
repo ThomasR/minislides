@@ -1,0 +1,32 @@
+{
+  "name": "minislides",
+  "description": "Minimal HTML slide presentation framework",
+  "version": "0.1.0",
+  "maintainers": [
+    {
+      "name": "Thomas Rosenau",
+      "email": "thomasr@fantasymail.de",
+      "web": ""
+    }
+  ],
+  "demos": [
+    "dist/minislides-example.html"
+  ],
+  "bugs": {
+    "url": "https://github.com/ThomasR/minislides/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ThomasR/minislides.git"
+  },
+  "license": "Apache-2.0",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "devDependencies": {
+    "uglify-js": ">=2.0.0"
+  },
+  "scripts": {
+    "start": "node src/poorMansCompressor"
+  }
+}

@@ -10,6 +10,11 @@
     section {
         /*background: transparent right bottom / 15vw auto no-repeat url("YOUR-LOGO.png");*/
     }
+    /* example style for horizontal slide animation
+    body.loaded section{transition-property:opacity,left,right;}
+    section:not(:target){left:calc(1vw - 100%);right:calc(1vw + 100%);}
+    section:target + section{left: calc(1vw + 100%);right:calc(1vw - 100%);}
+    */
 </style>
 
 <!-- each section is a slide -->

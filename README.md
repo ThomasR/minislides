@@ -25,7 +25,7 @@ Download [minislides.html](dist/minislides.html) and start editing. There are co
 
 ### JS
 ```javascript
-!function(m,I,n,i,S,l,y,d,e,s,_,R,O,C,K){K=e.body,s=Array.from(e[d+"All"]("section")),_=function(S){O=Math.max(1,Math.min(s[i],S||0)),C=s[O-1],Array.from(C[d+"All"](y)).forEach(function(m){m[I].remove(l)}),location.hash=O,K.style[m]=C[n][m]||"",K[n].slide=C[n].slide||O},window.addEventListener("keydown",function(m){switch(m.keyCode-32){case 0:case 2:case 7:case 8:m[S]();var n=C[d](y+":not(."+l+")");n?n[I].add(l):O<s[i]&&_(O+1);break;case 1:case 5:case 6:m[S](),O>1&&_(O-1);break;case-5:m[S](),K[I].toggle("muted");break;case 4:m[S](),_(1);break;case 3:m[S](),_(s[i])}},!1),R=function(m){m=location.hash.substr(1),m!=O&&_(m)},s.forEach(function(m,I){m.id=I+1}),R(),K[I].add("loaded"),setInterval(R,100)}("background","classList","dataset","length","preventDefault","revealed",".incremental","querySelector",document)
+!function(m,I,n,i,S,l,y,d,e,s,_,R,O,C,K){K=e.body,s=Array.from(e[d+"All"]("section")),_=function(S){O=Math.max(1,Math.min(s[i],S||0)),C=s[O-1],Array.from(C[d+"All"](y)).forEach(function(m){m[I].remove(l)}),location.hash=O,K.style[m]=C[n][m]||"",K[n].slide=C[n].slide||O},window.addEventListener("keydown",function(m){switch(m.keyCode-32){case 0:case 2:case 7:case 8:m[S]();var n=C[d](y+":not(."+l+")");n?n[I].add(l):O<s[i]&&_(O+1);break;case 1:case 5:case 6:m[S](),O>1&&_(O-1);break;case-5:m[S](),K[I].toggle("muted");break;case 4:m[S](),_(1);break;case 3:m[S](),_(s[i])}},!1),s.forEach(function(m,I){m.id=I+1}),R=function(m){m=location.hash.substr(1),m!=O&&_(m)},R(),K[I].add("loaded"),setInterval(R,100)}("background","classList","dataset","length","preventDefault","revealed",".incremental","querySelector",document)
 ```
 
 ### CSS

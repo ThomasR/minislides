@@ -55,16 +55,16 @@ window.addEventListener('keydown', function (e) {
     }
 }, false);
 
+slides.forEach(function (s, i) {
+    s.id = i + 1;
+});
+
 processHash = function (newPageNumber) {
     newPageNumber = location.hash.substr(1);
     if (newPageNumber != currentPageNumber) {
         setPage(newPageNumber);
     }
 };
-
-slides.forEach(function (s, i) {
-    s.id = i + 1;
-});
 processHash();
 body.classList.add('loaded');
 setInterval(processHash, 100);

@@ -15,13 +15,13 @@ section[data-id="box-shadow"] {
 }
 
 /* styling for body when given slides are visible */
-body[data-slide_id="some-slide-id"] {
+body[data-slide-id="some-slide-id"] {
     background: #4caf50;
 }
-body[data-slide_id="link-id"] {
+body[data-slide-id="link-id"] {
     background: #3f51b5;
 }
-body[data-slide_id="last-slide-id"] {
+body[data-slide-id="last-slide-id"] {
     background: #ff5722;
     transform: scale(1.7);
 }

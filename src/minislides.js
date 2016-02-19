@@ -13,7 +13,7 @@ function setPage(newPageNumber) {
     });
     loc.hash = currentPageNumber;
     document_body.style.background = activeSlide.dataset.bg || '';
-    document_body.dataset.slide_id = activeSlide.dataset.id || currentPageNumber;
+    document_body.dataset.slideId = activeSlide.dataset.id || currentPageNumber;
 }
 
 /*window.*/addEventListener('keydown', function (e, preventDefault) {

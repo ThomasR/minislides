@@ -4,7 +4,7 @@
 <title>minislides!</title>
 <base target="_blank">
 <!--link rel="icon" type="image/png" href="data:image/png;base64,YOUR-FAVICON-HERE"-->
-<style>html{overflow:hidden;font-size:4vw}body,html{width:100%;height:100%;margin:0;padding:0}body.loaded{transition:all .3s ease-out}body.loaded section{transition:opacity .5s ease-out}section{position:fixed;top:1vw;bottom:1vw;left:1vw;right:1vw;opacity:0}section:target{z-index:1}body:not(.muted) section:target{opacity:1}img{max-height:100%;max-width:100%}.incremental:not(.revealed){visibility:hidden}</style>
+<style>body,html{overflow:hidden;font-size:4vw;width:100%;height:100%;margin:0;padding:0}body.loaded{transition:.3s}body.loaded section{transition:opacity .5s}section{position:fixed;top:1vw;bottom:1vw;left:1vw;right:1vw;opacity:0}section:target{z-index:1}body:not(.muted) section:target{opacity:1}img{max-height:100%;max-width:100%}.incremental:not(.revealed){visibility:hidden}</style>
 <style>
 html, body {
     color: white;
@@ -15,21 +15,21 @@ body.loaded { /* default background */
 }
 
 /* Styling for slide contents */
-section[data-slide="some-slide-id"] {
+section[data-id="some-slide-id"] {
     color: black;
 }
-section[data-slide="box-shadow"] {
+section[data-id="box-shadow"] {
     box-shadow: inset 0 0 10vw rgba(0, 0, 0, .2), 0 0 1vw rgba(255, 255, 255, .5);
 }
 
 /* styling for body when given slides are visible */
-body[data-slide="some-slide-id"] {
+body[data-slide_id="some-slide-id"] {
     background: #4caf50;
 }
-body[data-slide="link-id"] {
+body[data-slide_id="link-id"] {
     background: #3f51b5;
 }
-body[data-slide="last-slide-id"] {
+body[data-slide_id="last-slide-id"] {
     background: #ff5722;
     transform: scale(1.7);
 }
@@ -96,7 +96,7 @@ img {
     <h1 class="v-centered">Hello World!</h1>
 </section>
 
-<section data-slide="some-slide-id">
+<section data-id="some-slide-id">
     <blockquote>Escape hides the presentation!</blockquote>
     <ul>
         <li class="incremental">incremental
@@ -105,11 +105,11 @@ img {
     </ul>
 </section>
 
-<section data-slide="another-slide-id" data-background="#607d8b">
+<section data-id="another-slide-id" data-bg="#607d8b">
     <p>Styled via attribute&#x2026;</p>
 </section>
 
-<section data-slide="box-shadow" class="centering-wrapper">
+<section data-id="box-shadow" class="centering-wrapper">
     <p class="v-centered">Press F5 to reload<br>(remember current slide)</p>
 </section>
 
@@ -118,16 +118,16 @@ img {
     <p style="position: fixed; top: 1em; right: 0; left: 0; text-align: center;">shrink-to-fit image</p>
 </section>
 
-<section data-slide="link-id" class="centering-wrapper">
+<section data-id="link-id" class="centering-wrapper">
     <p class="v-centered"><a href="https://github.com/ThomasR/minislides">Hyperlink opens a new tab</a></p>
 </section>
 
-<section data-slide="last-slide-id" class="centering-wrapper">
+<section data-id="last-slide-id" class="centering-wrapper">
     <p class="v-centered">Thank you!</p>
 </section>
 
 
-<script>!function(m,I,n,i,S,l,y,d,e,s,F,T,W){function h(S){F=Math.max(1,Math.min(s[i],S||0)),T=s[F-1],Array.from(T[d+"All"](y)).forEach(function(m){m[I].remove(l)}),location.hash=F,W.style[m]=T[n][m]||"",W[n].slide=T[n].slide||F}function A(m){m=location.hash.substr(1),m!=F&&h(m)}W=e.body,s=Array.from(e[d+"All"]("section")),window.addEventListener("keydown",function(m){switch(m.keyCode-32){case 0:case 2:case 7:case 8:m[S]();var n=T[d](y+":not(."+l+")");n?n[I].add(l):F<s[i]&&h(F+1);break;case 1:case 5:case 6:m[S](),F>1&&h(F-1);break;case-5:m[S](),W[I].toggle("muted");break;case 4:m[S](),h(1);break;case 3:m[S](),h(s[i])}},!1),s.forEach(function(m,I){m.id=I+1}),A(),W[I].add("loaded"),setInterval(A,100)}("background","classList","dataset","length","preventDefault","revealed",".incremental","querySelector",document)</script>
+<script>!function(m,I,n,i,S,l,y,d,e,s,Y,O){function f(y){e=Math.min(d.length,y||1),s=d[e-1],Array.from(s[S+"All"](i)).forEach(function(I){I[m].remove(n)}),l.hash=e,O.style.background=s[I].bg||"",O[I].slide_id=s[I].id||e}function h(m){m=l.hash.substr(1),m!=e&&f(m)}O=y.body,d=Array.from(y[S+"All"]("section")),addEventListener("keydown",function(I,l){switch(I.keyCode-32){case 0:case 2:case 7:case 8:Y=s[S](i+":not(."+n+")"),Y?Y[m].add(n):f(e+1),l=1;break;case 1:case 5:case 6:f(e-1),l=1;break;case-5:O[m].toggle("muted"),l=1;break;case 4:f(1),l=1;break;case 3:f(1/0),l=1}l&&I.preventDefault()}),d.forEach(function(m,I){m.id=I+1}),h(),O[m].add("loaded"),setInterval(h,99)}("classList","dataset","revealed",".incremental","querySelector",location,document)</script>
 <!--
 Copyright 2016 Thomas Rosenau
 

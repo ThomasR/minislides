@@ -1,11 +1,11 @@
-var slides, setPage, processHash, currentPageNumber, activeSlide,
+var slides, currentPageNumber, activeSlide,
     revealedCls = 'revealed', incrementalSelector = '.incremental',
     querySelector = 'querySelector', document = document, body;
 
 body = document.body;
 slides = Array.from(document[querySelector + 'All']('section'));
 
-setPage = function (newPageNumber) {
+function setPage(newPageNumber) {
     currentPageNumber = Math.max(1, Math.min(slides.length, newPageNumber || 0));
     activeSlide = slides[currentPageNumber - 1];
     Array.from(activeSlide[querySelector + 'All'](incrementalSelector)).forEach(function (el) {
@@ -14,7 +14,7 @@ setPage = function (newPageNumber) {
     location.hash = currentPageNumber;
     body.style.background = activeSlide.dataset.background || '';
     body.dataset.slide = activeSlide.dataset.slide || currentPageNumber;
-};
+}
 
 window.addEventListener('keydown', function (e) {
     switch (e.keyCode - 32) { // - 32 for better compression
@@ -59,12 +59,12 @@ slides.forEach(function (s, i) {
     s.id = i + 1;
 });
 
-processHash = function (newPageNumber) {
+function processHash(newPageNumber) {
     newPageNumber = location.hash.substr(1);
     if (newPageNumber != currentPageNumber) {
         setPage(newPageNumber);
     }
-};
+}
 processHash();
 body.classList.add('loaded');
 setInterval(processHash, 100);

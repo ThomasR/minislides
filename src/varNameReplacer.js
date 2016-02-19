@@ -1,8 +1,8 @@
 /**
 * quick'n'dirty variable name replacer:
-*   function(e,a,t,n,c,o,s,r,d,i,l,u,f,h,m){
+*   function(e,a,t,n,c,o,s,r,d,i,l,u,f){
 * ->
-*   function(m,i,n,í,s,l,ì,d,e,ş,_,R,O,C,K){
+*   function(m,i,n,í,s,l,ì,d,e,ş,F,T,W){
 *
 * Do not try this at home, as it will replace all one-letter identifiers, including property names!
 * Things like `Math.E` and `foo.b()` will break.
@@ -12,8 +12,8 @@
 const esprima = require('esprima');
 const escodegen = require('escodegen');
 
-// const target = 'miníslìdeş_ROCK'; // this looks better and has the same number of chars, but more bytes in utf-8 ಠ_ಠ
-const target = 'mIniSlydes_ROCK';
+// const target = 'miníslìdeşFTW'; // this looks better and has the same number of chars, but more bytes in utf-8 ಠ_ಠ
+const target = 'mIniSlydesFTW';
 
 /**
 * very basic syntax tree traversal
@@ -24,27 +24,27 @@ const target = 'mIniSlydes_ROCK';
 * Things like `Math.E` and `foo.b()` will break.
 */
 let traverse = (ast, mapping) => {
-    let replaced = [];
+    let usedLetters = [];
     if (Array.isArray(ast)) {
         ast.forEach(item => {
-            let moreReplaced = traverse(item, mapping);
-            replaced.push.apply(replaced, moreReplaced);
+            let more = traverse(item, mapping);
+            usedLetters.push.apply(usedLetters, more);
         });
     } else if (ast.type == 'Identifier' && ast.name.length === 1) {
         if (mapping[ast.name]) {
             ast.name = mapping[ast.name];
         }
-        replaced.push(ast.name);
+        usedLetters.push(ast.name);
     } else {
         Object.keys(ast).forEach(key => {
             //console.log(key, ast[key]);
             if (ast[key] && typeof ast[key] == 'object') {
-                let moreReplaced = traverse(ast[key], mapping);
-                replaced.push.apply(replaced, moreReplaced);
+                let more = traverse(ast[key], mapping);
+                usedLetters.push.apply(usedLetters, more);
             }
         });
     }
-    return replaced;
+    return usedLetters;
 };
 
 // get next letter

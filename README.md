@@ -19,7 +19,7 @@ With only <span class="js">813</em> bytes of JavaScript, <span class="css">398</
 
 Download [minislides.html](dist/minislides.html) and start editing. There are comments there that will guide you. No need to download any additional files. JS and CSS is included.
 
- See [minislides_example.html](dist/minislides_example.html) for exemplary use. 
+See [thomasr.github.io/minislides](http://thomasr.github.io/minislides/) for exemplary use. 
 
 ## The code
 

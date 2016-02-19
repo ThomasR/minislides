@@ -30,6 +30,6 @@
     "uglify-js": ">=2.0.0"
   },
   "scripts": {
-    "start": "node src/build"
+    "start": "node build/build"
   }
 }

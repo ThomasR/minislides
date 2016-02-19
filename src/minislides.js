@@ -1,4 +1,4 @@
-var slides, currentPageNumber, activeSlide, incremental,
+var slides, currentPageNumber, activeSlide, incremental, keyCodeNormalized,
     revealedCls = 'revealed', incrementalSelector = '.incremental',
     querySelector = 'querySelector', loc = location, doc = document, document_body;
 
@@ -17,12 +17,13 @@ function setPage(newPageNumber) {
 }
 
 /*window.*/addEventListener('keydown', function (e, preventDefault) {
-    switch (e.keyCode - 32) { // - 32 for better compression
-    case 32 - 32: // space
-    case 34 - 32: // pgDn
-    case 39 - 32: // right arrow
-    case 40 - 32: // down arrow
-    //case 90 - 32: // z abuse (Incutex Mini Wireless Presenter)
+    keyCodeNormalized = e.keyCode - 32; // - 32 for better compression
+    if (!keyCodeNormalized/*keyCodeNormalized == 32 - 32*/ // space
+            || keyCodeNormalized == 34 - 32 // pgDn
+            || keyCodeNormalized == 39 - 32 // right arrow
+            || keyCodeNormalized == 40 - 32 // down arrow
+            //|| keyCodeNormalized == 90 - 32 // z abuse (Incutex Mini Wireless Presenter)
+    ) {
         incremental = activeSlide[querySelector](incrementalSelector + ':not(.' + revealedCls + ')');
         if (incremental) {
             incremental.classList.add(revealedCls);
@@ -30,26 +31,26 @@ function setPage(newPageNumber) {
             setPage(currentPageNumber + 1);
         }
         preventDefault = 1;
-        break;
-    case 33 - 32: // pgUp
-    case 37 - 32: // left
-    case 38 - 32: // up
-    //case 116 - 32: // F5 abuse (Incutex Mini Wireless Presenter)
+    }
+    if (keyCodeNormalized == 33 - 32 // pgUp
+            || keyCodeNormalized == 37 - 32 // left
+            || keyCodeNormalized == 38 - 32 // up
+            //|| keyCodeNormalized == 116 - 32 // F5 abuse (Incutex Mini Wireless Presenter)
+    ) {
         setPage(currentPageNumber - 1);
         preventDefault = 1;
-        break;
-    case 27 - 32: // esc
+    }
+    if (keyCodeNormalized == 27 - 32) { // esc
         document_body.classList.toggle('muted');
         preventDefault = 1;
-        break;
-    case 36 - 32: // home
+    }
+    if (keyCodeNormalized == 36 - 32) { // home
         setPage(1);
         preventDefault = 1;
-        break;
-    case 35 - 32: // end
+    }
+    if (keyCodeNormalized == 35 - 32) { // end
         setPage(Infinity); // shorter than slides.length, since it gets compressed to 1/0
         preventDefault = 1;
-        break;
     }
     if (preventDefault) {
         e.preventDefault();

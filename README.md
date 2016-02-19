@@ -2,7 +2,7 @@
 
 **The minimal HTML slide presentation framework**
 
-With only <span class="js">745</em> bytes of JavaScript, <span class="css">371</span> bytes of CSS, and a few lines of HTML, it offers
+With only <span class="js">717</em> bytes of JavaScript, <span class="css">371</span> bytes of CSS, and a few lines of HTML, it offers
 
 * Fully responsive design
 * keyboard navigation by arrow keys, space bar, PageUp, PageDown, Home, End.
@@ -32,7 +32,7 @@ See [thomasr.github.io/minislides](http://thomasr.github.io/minislides/) for exe
 
 ### JS
 ```javascript
-!function(m,I,n,i,S,l,y,d,e,s,Y,O){function f(y){e=Math.min(d.length,y||1),s=d[e-1],Array.from(s[S+"All"](i)).forEach(function(I){I[m].remove(n)}),l.hash=e,O.style.background=s[I].bg||"",O[I].slideId=s[I].id||e}function h(m){m=l.hash.substr(1),m!=e&&f(m)}O=y.body,d=Array.from(y[S+"All"]("section")),addEventListener("keydown",function(I,l){switch(I.keyCode-32){case 0:case 2:case 7:case 8:Y=s[S](i+":not(."+n+")"),Y?Y[m].add(n):f(e+1),l=1;break;case 1:case 5:case 6:f(e-1),l=1;break;case-5:O[m].toggle("muted"),l=1;break;case 4:f(1),l=1;break;case 3:f(1/0),l=1}l&&I.preventDefault()}),d.forEach(function(m,I){m.id=I+1}),h(),O[m].add("loaded"),setInterval(h,99)}("classList","dataset","revealed",".incremental","querySelector",location,document)
+!function(m,I,n,i,S,l,y,d,e,s,F,T,W){function h(y){e=Math.min(d.length,y||1),s=d[e-1],Array.from(s[S+"All"](i)).forEach(function(I){I[m].remove(n)}),l.hash=e,W.style.background=s[I].bg||"",W[I].slideId=s[I].id||e}function A(m){m=l.hash.substr(1),m!=e&&h(m)}W=y.body,d=Array.from(y[S+"All"]("section")),addEventListener("keydown",function(I,l){T=I.keyCode-32,T&&2!=T&&7!=T&&8!=T||(F=s[S](i+":not(."+n+")"),F?F[m].add(n):h(e+1),l=1),(1==T||5==T||6==T)&&(h(e-1),l=1),-5==T&&(W[m].toggle("muted"),l=1),4==T&&(h(1),l=1),3==T&&(h(1/0),l=1),l&&I.preventDefault()}),d.forEach(function(m,I){m.id=I+1}),A(),W[m].add("loaded"),setInterval(A,99)}("classList","dataset","revealed",".incremental","querySelector",location,document)
 ```
 
 ### CSS

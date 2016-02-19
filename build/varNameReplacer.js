@@ -12,8 +12,8 @@
 const esprima = require('esprima');
 const escodegen = require('escodegen');
 
-// const target = 'miníslìdeѕ_ǃ'; // this looks better and has the same number of chars, but more bytes in utf-8 ಠ_ಠ
-const target = 'mIniSlydesYO';
+// const target = 'miníslìdeѕFTW'; // this looks better and has the same number of chars, but more bytes in utf-8 ಠ_ಠ
+const target = 'mIniSlydesFTW';
 
 /**
 * very basic syntax tree traversal

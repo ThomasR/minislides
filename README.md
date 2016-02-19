@@ -2,7 +2,7 @@
 
 **The minimal HTML slide presentation framework**
 
-With only <span class="js">717</em> bytes of JavaScript, <span class="css">371</span> bytes of CSS, and a few lines of HTML, it offers
+With only <span class="js">711</em> bytes of JavaScript, <span class="css">371</span> bytes of CSS, and a few lines of HTML, it offers
 
 * Fully responsive design
 * keyboard navigation by arrow keys, space bar, PageUp, PageDown, Home, End.
@@ -32,7 +32,7 @@ See [thomasr.github.io/minislides](http://thomasr.github.io/minislides/) for exe
 
 ### JS
 ```javascript
-!function(m,I,n,i,S,l,y,d,e,s,F,T,W){function h(y){e=Math.min(d.length,y||1),s=d[e-1],Array.from(s[S+"All"](i)).forEach(function(I){I[m].remove(n)}),l.hash=e,W.style.background=s[I].bg||"",W[I].slideId=s[I].id||e}function A(m){m=l.hash.substr(1),m!=e&&h(m)}W=y.body,d=Array.from(y[S+"All"]("section")),addEventListener("keydown",function(I,l){T=I.keyCode-32,T&&2!=T&&7!=T&&8!=T||(F=s[S](i+":not(."+n+")"),F?F[m].add(n):h(e+1),l=1),(1==T||5==T||6==T)&&(h(e-1),l=1),-5==T&&(W[m].toggle("muted"),l=1),4==T&&(h(1),l=1),3==T&&(h(1/0),l=1),l&&I.preventDefault()}),d.forEach(function(m,I){m.id=I+1}),A(),W[m].add("loaded"),setInterval(A,99)}("classList","dataset","revealed",".incremental","querySelector",location,document)
+!function(m,I,n,i,S,l,y,d,e,s,_,F,T,W){function $(y){e=Math.min(d.length,y||1),s=d[e-1],Array.from(s[S+"All"](i)).forEach(function(I){I[m].remove(n)}),l.hash=e,W.style.background=s[I].bg,W[I].slideId=s[I].id||e}function H(m){m=l.hash.substr(1),m!=e&&$(m)}W=y.body,d=Array.from(y[S+"All"]("section")),addEventListener("keydown",function(I){F=I.keyCode-32,F&&2!=F&&7!=F&&8!=F||(_=s[S](i+":not(."+n+")"),_?_[m].add(n):$(e+1),T=1),1!=F&&5!=F&&6!=F||($(e-1),T=1),-5==F&&(W[m].toggle("muted"),T=1),4==F&&($(1),T=1),3==F&&($(1/0),T=1),T&&I.preventDefault()}),d.forEach(function(m,I){m.id=I+1}),H(),W[m].add("loaded"),setInterval(H,99)}("classList","dataset","revealed",".incremental","querySelector",location,document)
 ```
 
 ### CSS

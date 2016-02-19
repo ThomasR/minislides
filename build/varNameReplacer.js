@@ -1,8 +1,8 @@
 /**
 * quick'n'dirty variable name replacer:
-*   function(e,a,t,n,c,o,s,r,d,i,l,u,f){
+*   function(e,t,n,o,a,d,r,l,c,i,s,u,f,h){
 * ->
-*   function(m,i,n,í,s,l,ì,d,e,ѕ,F,T,W){
+*   function(m,i,n,í,s,l,ì,d,e,ѕ,_,F,T,W){
 *
 * Do not try this at home, as it will replace all one-letter identifiers, including property names!
 * Things like `Math.E` and `foo.b()` will break.
@@ -12,8 +12,8 @@
 const esprima = require('esprima');
 const escodegen = require('escodegen');
 
-// const target = 'miníslìdeѕFTW'; // this looks better and has the same number of chars, but more bytes in utf-8 ಠ_ಠ
-const target = 'mIniSlydesFTW';
+// const target = 'miníslìdeѕ_FTW'; // this looks better and has the same number of chars, but more bytes in utf-8 ಠ_ಠ
+const target = 'mIniSlydes_FTW$';
 
 /**
 * very basic syntax tree traversal

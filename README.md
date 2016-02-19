@@ -15,6 +15,13 @@ With only <span class="js">813</em> bytes of JavaScript, <span class="css">398</
 * *No* global namespace pollution, i.e. no global variables and no `on*` attributes
 * Valid HTML markup
 
+## Compatibility
+
+* Firefox
+* Chrome
+* Edge
+* Opera
+
 ## Usage
 
 Download [minislides.html](dist/minislides.html) and start editing. There are comments there that will guide you. No need to download any additional files. JS and CSS is included.

@@ -22,7 +22,7 @@ function setPage(newPageNumber) {
 
 // Init keyboard navigation
 /*window.*/addEventListener('keydown', function (e) {
-    keyCodeNormalized = e.keyCode - 32; // - 32 for better compression
+    keyCodeNormalized = e.which - 32; // - 32 for better compression
     if (!keyCodeNormalized /*keyCodeNormalized == 32 - 32*/ // space
             || keyCodeNormalized == 34 - 32 // pgDn
             || keyCodeNormalized == 39 - 32 // right arrow

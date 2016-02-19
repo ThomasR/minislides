@@ -12,7 +12,7 @@ slides = Array.from(doc[querySelector + 'All']('section'));
 function setPage(newPageNumber) {
     currentPageNumber = Math.min(slides.length, newPageNumber || 1);
     activeSlide = slides[currentPageNumber - 1];
-    Array.from(activeSlide[querySelector + 'All'](incrementalSelector)).forEach(function (el) {
+    slides.map.call(activeSlide[querySelector + 'All'](incrementalSelector), function (el) {
         el.classList.remove(revealedCls);
     });
     loc.hash = currentPageNumber;
@@ -63,7 +63,7 @@ function setPage(newPageNumber) {
 });
 
 // set slide ids
-slides.forEach(function (slide, i) {
+slides.map(function (slide, i) {
     slide.id = i + 1;
 });
 

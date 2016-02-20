@@ -26,7 +26,9 @@
   "devDependencies": {
     "clean-css": "^3.4.9",
     "escodegen": "^1.8.0",
+    "escope": "^3.4.0",
     "esprima": "^2.7.2",
+    "estraverse": "^4.1.1",
     "uglify-js": ">=2.0.0"
   },
   "scripts": {

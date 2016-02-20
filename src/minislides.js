@@ -1,4 +1,4 @@
-var slides, currentPageNumber, activeSlide, incremental, keyCodeNormalized, preventDefault,
+var slides, currentPageNumber, activeSlide, incremental, keyCodeNormalized,
     revealedCls = 'revealed', incrementalSelector = '.incremental',
     querySelector = 'querySelector', loc = location, doc = document, document_body;
 
@@ -16,12 +16,12 @@ function setPage(newPageNumber) {
         el.classList.remove(revealedCls);
     });
     loc.hash = currentPageNumber;
-    document_body.style.background = activeSlide.dataset.bg;
+    document_body.style.background = activeSlide.dataset.bg || '';
     document_body.dataset.slideId = activeSlide.dataset.id || currentPageNumber;
 }
 
 // Init keyboard navigation
-/*window.*/addEventListener('keydown', function (e) {
+/*window.*/addEventListener('keydown', function (e, preventDefault) {
     keyCodeNormalized = e.which - 32; // - 32 for better compression
     if (!keyCodeNormalized /*keyCodeNormalized == 32 - 32*/ // space
             || keyCodeNormalized == 34 - 32 // pgDn

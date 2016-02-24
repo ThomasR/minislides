@@ -36,6 +36,8 @@ let exampleStyles = fs.readFileSync(`${srcDir}/example.css`, 'utf-8');
 html = html.replace(/<style>\s+[\s\S]*?<\/style>/, `<style>\n${exampleStyles}</style>`);
 let exampleSections = fs.readFileSync(`${srcDir}/example.html`, 'utf-8');
 html = html.replace(/<section[\s\S]*<\/section>\n/, exampleSections);
+const favicon = fs.readFileSync(`${srcDir}/minislides-16x16.png`).toString('base64');
+html = html.replace(/<(!--)?link rel="icon"[^>]+>/, `<link rel="icon" type="image/png" href="data:image/png;base64,${favicon}">`);
 fs.writeFileSync(`${distDir}/minislides_example.html`, html);
 
 // paste to readme

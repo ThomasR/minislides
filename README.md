@@ -19,10 +19,9 @@ No plugins, no dependencies, no bullshit. Just minislides.
 
 ## Compatibility
 
-* Firefox
-* Chrome
-* Edge
-* Opera
+![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/chrome/chrome_48x48.png "Google Chrome") | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/firefox/firefox_48x48.png "Mozilla Firefox") | ![Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/edge/edge_48x48.png "MS Edge") | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/opera/opera_48x48.png "Opera")
+:-: | :-: | :-: | :-:
+ ✔ |  ✔ | ✔ | ✔ 
 
 ## Usage
 

@@ -3,7 +3,6 @@
   <component name="JavaScriptLibraryMappings">
     <file url="file://$PROJECT_DIR$" libraries="{HTML, HTML5 / EcmaScript 5}" />
     <file url="file://$PROJECT_DIR$/build" libraries="{ECMAScript 6, Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/dist" libraries="{ECMAScript 6}" />
     <file url="file://$PROJECT_DIR$/node_modules" libraries="{ECMAScript 6, Node.js Core}" />
     <excludedPredefinedLibrary name="HTML" />
     <excludedPredefinedLibrary name="HTML5 / EcmaScript 5" />

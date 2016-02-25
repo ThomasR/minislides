@@ -32,12 +32,12 @@ See [thomasr.github.io/minislides](http://thomasr.github.io/minislides/) for exe
 
 ## The code
 
-### JS
+### [JS](dist/minislides.min.js)
 ```javascript
 !function(m,I,n,i,S,l,y,d,e,s,F,T,W){function _(g){d=Math.min(e.length,g||1),s=e[d-1],e.map.call(s[S+"All"](i),function(t){t[m].remove(n)}),l.hash=d,W.style.background=s[I].bg||"",W[I].slideId=s[I].id||d}function $(a){a=l.hash.substr(1),a!=d&&_(a)}W=y.body,e=Array.from(y[S+"All"]("section")),addEventListener("keydown",function(t,o){T=t.which-32,T&&2!=T&&7!=T&&8!=T||(F=s[S](i+":not(."+n+")"),F?F[m].add(n):_(d+1),o=1),1!=T&&5!=T&&6!=T||(_(d-1),o=1),-5==T&&(W[m].toggle("muted"),o=1),4==T&&(_(1),o=1),3==T&&(_(1/0),o=1),o&&t.preventDefault()}),e.map(function(a,t){a.id=t+1}),$(),W[m].add("loaded"),setInterval($,99)}("classList","dataset","revealed",".incremental","querySelector",location,document)
 ```
 
-### CSS
+### [CSS](dist/minislides.min.css)
 ```css
 body,html{overflow:hidden;font-size:4vw;width:100%;height:100%;margin:0;padding:0}body.loaded{transition:.3s}body.loaded section{transition:opacity .5s}section{position:fixed;top:1vw;bottom:1vw;left:1vw;right:1vw;opacity:0}section:target{z-index:1}body:not(.muted) section:target{opacity:1}img{max-height:100%;max-width:100%}.incremental:not(.revealed){visibility:hidden}
 ```

@@ -1,4 +1,4 @@
-# minislides
+# minislides    <img alt="minislides logo" src="src/minislides-16x16.png" align="right">
 
 **The minimal HTML slide presentation framework**
 

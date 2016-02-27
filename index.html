@@ -51,8 +51,9 @@ a:hover {
     color: #fff9c4 !important;
 }
 blockquote {
-    box-shadow: 0 0 2em rgba(255, 255, 255, .2);
-    border-radius: .07em;
+    background: rgba(0, 0, 0, .05);
+    border: 2px solid rgba(255, 255, 255, .1);
+    border-radius: .1em;
     padding: .7em 1.5em;
     font-family: "Museo 300", "Calibri", sans-serif;
     font-weight: 300;
@@ -98,15 +99,19 @@ img {
 
 <!-- each section is a slide -->
 <section class="centering-wrapper">
-    <h1 class="v-centered">Hello World!</h1>
+    <div class="v-centered">
+        <h1>minislides</h1>
+        <span>The minimal HTML slide presentation framework</span>
+    </div>
 </section>
 
 <section data-id="some-slide-id">
-    <blockquote>Escape hides the presentation!</blockquote>
+    <p>You can navigate using</p>
     <ul>
-        <li class="incremental">incremental
-        <li class="incremental">bullet
-        <li class="incremental">list
+        <li>The space bar
+        <li>The arrow keys
+        <li>Home, End, PgUp, PgDwn
+        <li class="incremental">Escape <span class="incremental">(to hide the presentation contents)</span>
     </ul>
 </section>
 

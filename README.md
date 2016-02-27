@@ -14,6 +14,7 @@ With only <span class="js">700</em> bytes of JavaScript, <span class="css">371</
 * shrink-to-fit images
 * *No* global namespace pollution, i.e. no global variables and no `on*` attributes
 * Valid, semantic HTML markup
+* No FOUC
 
 No plugins, no dependencies, no bullshit. Just minislides.
 

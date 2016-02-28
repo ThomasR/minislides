@@ -29,6 +29,7 @@
     "escope": "^3.4.0",
     "esprima": "^2.7.2",
     "estraverse": "^4.1.1",
+    "isogrammify": "^1.0.0",
     "uglify-js": ">=2.0.0"
   },
   "scripts": {

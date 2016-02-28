@@ -14,7 +14,7 @@ const esprima = require('esprima');
 const estraverse = require('estraverse');
 const escodegen = require('escodegen');
 
-const util = require('./util');
+const util = require('isogrammify/lib/util');
 
 module.exports = function (code) {
     let ast = esprima.parse(code);

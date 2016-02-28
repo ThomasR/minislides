@@ -3,9 +3,9 @@
 const uglify = require('uglify-js');
 const CleanCSS = require('clean-css');
 const fs = require('fs');
+const isogrammify = require('isogrammify');
 
 const pmc = require('./poorMansCompressor');
-const varNameReplace = require('./varNameReplacer');
 
 const srcDir = `${__dirname}/../src/`;
 const distDir = `${__dirname}/../dist/`;
@@ -13,7 +13,7 @@ const distDir = `${__dirname}/../dist/`;
 // uglify JS
 let js = pmc(fs.readFileSync(`${srcDir}/minislides.js`, 'utf-8'));
 let minJS = uglify.minify(js, {fromString: true}).code;
-minJS = varNameReplace(minJS);
+minJS = isogrammify(minJS, 'mIniSlydesFTW_$'); // 'miníslìdeѕ_FTWǃ' looks better but has more bytes per char in utf-8 ಠ_ಠ
 fs.writeFileSync(`${distDir}/minislides.min.js`, minJS);
 console.log(minJS);
 console.info(minJS.length);

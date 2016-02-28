@@ -1,7 +1,7 @@
 {
   "name": "minislides",
   "description": "Minimal HTML slide presentation framework",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "maintainers": [
     {
       "name": "Thomas Rosenau",

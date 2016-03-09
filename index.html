@@ -7,8 +7,8 @@
 <style>body,html{overflow:hidden;font-size:4vw;width:100%;height:100%;margin:0;padding:0}body.loaded{transition:.3s}body.loaded section{transition:opacity .5s}section{position:fixed;top:1vw;bottom:1vw;left:1vw;right:1vw;opacity:0}section:target{z-index:1}body:not(.muted) section:target{opacity:1}img{max-height:100%;max-width:100%}.incremental:not(.revealed){visibility:hidden}</style>
 <style>
 body.loaded section{transition-property:opacity,left,right;}
-section:not(:target){left:-99vw;right:101vw;}
-section:target + section{left: 101vw;right:-99vw;}
+section:not(:target):not([data-id="last-slide-id"]){left:-99vw;right:101vw;}
+section:target + section:not([data-id="last-slide-id"]){left: 101vw;right:-99vw;}
 html, body {
     color: white;
     font-family: "Museo Sans 500", "Calibri", sans-serif;
@@ -32,9 +32,12 @@ body[data-slide-id="some-slide-id"] {
 body[data-slide-id="link-id"] {
     background: #3f51b5;
 }
+body[data-slide-id="compat-id"] {
+    background: #263238;
+}
 body[data-slide-id="last-slide-id"] {
     background: #ff5722;
-    transform: scale(1.7);
+    transform: scale(1.8);
 }
 
 h1 {
@@ -75,6 +78,10 @@ blockquote:after {
 img {
     box-shadow: .1vw .2vw 1vw rgba(0, 0, 0, .7);
 }
+table img {
+    box-shadow: none;
+    width: 6vw;
+}
 
 /* vertical centering */
 .centering-wrapper {
@@ -113,23 +120,77 @@ img {
         <li>Home, End, PgUp, PgDwn
         <li class="incremental">Escape <span class="incremental">(to hide the presentation contents)</span>
     </ul>
+    <p class="incremental">As you can see, <span class="incremental">incremental content is supported.</span></p>
+</section>
+
+<section data-id="some-slide-id">
+    <p>Minislides consists of one single HTML file.</p>
+    <p>Everything is included.</p>
+    <p>No plugins, no dependencies, no bullshit.</p>
+    <p>Only <span id="js-size" style="opacity: .5; font-weight: bold;"></span> bytes of JavaScript.</p>
+    <p>Only <span id="css-size" style="opacity: .5; font-weight: bold;"></span> bytes of CSS.</p>
 </section>
 
 <section data-id="another-slide-id" data-bg="#607d8b">
-    <p>Styled via attribute&#x2026;</p>
+    <p>You can style your slides using CSS.</p>
+    <p>Or, a data-attribute:</p>
+    <pre><code>   &lt;section data-bg="<span style="color:#ffdd99">#607d8b</span>"></code></pre>
+    <p>Its value will be copied to the body's <code>background</code> attribute when the slide is active.</p>
+    <p class="incremental">You can use background-images, too.</p>
 </section>
 
-<section data-id="box-shadow" class="centering-wrapper">
-    <p class="v-centered">Press F5 to reload<br>(remember current slide)</p>
+<section>
+    <p>The default stylesheet features</p>
+    <ul>
+        <li class="incremental">Fully responsive design<br><span class="incremental">(try it out now!)</span>
+        <li class="incremental">Fade-in effect on load and reload
+        <li class="incremental">Smooth slide transitions
+        <li class="incremental">and…
+    </ul>
 </section>
 
 <section class="centering-wrapper">
     <img class="v-centered" src="Cat-by-Octavio-Fossatti-cc-zero.jpg" alt="">
-    <p style="position: fixed; top: 1em; right: 0; left: 0; text-align: center;">shrink-to-fit image</p>
+    <p style="position: fixed; top: 1em; right: 0; left: 0; text-align: center;">Image sizing defaults to <em>shrink-to-fit.</em><br>Of course, you can override it, using CSS.</p>
+</section>
+
+<section data-id="box-shadow" class="centering-wrapper">
+    <p class="v-centered">Minislides uses the location hash<br>to remember the current slide.<br>Press F5 to reload</p>
 </section>
 
 <section data-id="link-id" class="centering-wrapper">
-    <p class="v-centered"><a href="https://github.com/ThomasR/minislides">Hyperlink opens a new tab</a></p>
+    <p class="v-centered"><a href="https://github.com/ThomasR/minislides">Hyperlinks open in new tabs</a></p>
+</section>
+
+<section data-id="compat-id" class="centering-wrapper">
+    <div class="v-centered">
+        <p>Browser compatibility</p>
+        <table style="width: 100%;">
+            <thead>
+            <tr>
+                <th>
+                    <img title="Google Chrome" alt="Chrome" src="chrome.png">
+                </th>
+                <th>
+                    <img title="Mozilla Firefox" alt="Firefox" src="firefox.png">
+                </th>
+                <th>
+                    <img title="MS Edge" alt="Edge" src="edge.png"></th>
+                <th>
+                    <img title="Opera" alt="Opera" src="opera.png">
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>✔</td>
+                <td>✔</td>
+                <td>✔</td>
+                <td>✔</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </section>
 
 <section data-id="last-slide-id" class="centering-wrapper">
@@ -138,6 +199,8 @@ img {
 
 
 <script>!function(m,I,n,i,S,l,y,d,e,s,F,T,W){function _(g){e=Math.min(d.length,g||1),s=d[e-1],d.map.call(s[S+"All"](i),function(t){t[m].remove(n)}),l.hash=e,W.style.background=s[I].bg||"",W[I].slideId=s[I].id||e}function $(a){a=l.hash.substr(1),a!=e&&_(a)}W=y.body,d=Array.from(y[S+"All"]("section")),addEventListener("keydown",function(t,o){T=t.which-32,T&&2!=T&&7!=T&&8!=T||(F=s[S](i+":not(."+n+")"),F?F[m].add(n):_(e+1),o=1),1!=T&&5!=T&&6!=T||(_(e-1),o=1),-5==T&&(W[m].toggle("muted"),o=1),4==T&&(_(1),o=1),3==T&&(_(1/0),o=1),o&&t.preventDefault()}),d.map(function(a,t){a.id=t+1}),$(),W[m].add("loaded"),setInterval($,99)}("classList","dataset","revealed",".incremental","querySelector",location,document)</script>
+<script>document.querySelector('#js-size').textContent=document.querySelector('script').textContent.trim().length</script>
+<script>document.querySelector('#css-size').textContent=document.querySelector('style').textContent.trim().length</script>
 <!--
 Copyright 2016 Thomas Rosenau
 

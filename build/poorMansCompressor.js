@@ -41,7 +41,6 @@ module.exports = function (code) {
 
     // filter out the attributes that are beneficial for compression
     let vars = [];
-    let strings = [];
     Object.keys(attrs).forEach(key => {
         let occurrences = attrs[key];
         let count = occurrences.length;
@@ -56,8 +55,10 @@ module.exports = function (code) {
                 node.property.name = varName;
             });
             identifiers.push(varName);
-            vars.push(varName);
-            strings.push(`"${key}"`);
+            vars.push({
+                name: varName,
+                value: `'${key}'`
+            });
         }
     });
 
@@ -90,15 +91,17 @@ module.exports = function (code) {
             }
         }
     });
-    varDecl.sort((a, b) => {
+
+    vars = vars.concat(varDecl);
+    vars.sort((a, b) => {
         if (typeof a.value == 'undefined') {
             return typeof b.value == 'undefined' ? 0 : 1;
         }
-        return typeof b.value == 'undefined' ? -1 : 0;
+        if (typeof b.value == 'undefined') {
+            return -1;
+        }
+        return a.value === b.value ? 0 : a.value < b.value ? -1 : 1;
     });
-    vars = vars.concat(varDecl.map(x => x.name));
-    strings = strings.concat(varDecl.map(x => x.value).filter(x => x));
-
     let f = escodegen.generate(ast, {
         format: {
             compact: true,
@@ -106,5 +109,7 @@ module.exports = function (code) {
             semicolons: false
         }
     });
-    return `(function (${vars.join(', ')}) {${f}})(${strings. join(', ')});`;
+    let names = vars.map(v => v.name);
+    let strings = vars.map(x => x.value).filter(x => x);
+    return `(function (${names.join(', ')}) {${f}})(${strings.join(', ')});`;
 };

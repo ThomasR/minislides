@@ -37,11 +37,11 @@ function setPage(newPageNumber) {
         }
         preventDefault = 1;
     }
-    if (!(keyCodeNormalized == 33 - 32 // pgUp
+    if (keyCodeNormalized == 33 - 32 // pgUp
             || keyCodeNormalized == 37 - 32 // left
             || keyCodeNormalized == 38 - 32 // up
             //|| keyCodeNormalized == 116 - 32 // F5 abuse (Incutex Mini Wireless Presenter)
-    )) {} else { // this double-negation pattern improves uglifyJS's compression https://github.com/mishoo/UglifyJS2/issues/979
+    ) {
         setPage(currentPageNumber - 1);
         preventDefault = 1;
     }

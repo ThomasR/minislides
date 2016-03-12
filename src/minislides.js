@@ -24,10 +24,10 @@ function setPage(newPageNumber) {
 /*window.*/addEventListener('keydown', function (e, preventDefault) {
     keyCodeNormalized = e.which - 32; // - 32 for better compression
     if (!keyCodeNormalized /*keyCodeNormalized == 32 - 32*/ // space
-            || keyCodeNormalized == 34 - 32 // pgDn
-            || keyCodeNormalized == 39 - 32 // right arrow
-            || keyCodeNormalized == 40 - 32 // down arrow
-            //|| keyCodeNormalized == 90 - 32 // z abuse (Incutex Mini Wireless Presenter)
+            || !(keyCodeNormalized - (34 - 32)) // pgDn
+            || !(keyCodeNormalized - (39 - 32)) // right arrow
+            || !(keyCodeNormalized - (40 - 32)) // down arrow
+            //|| !(keyCodeNormalized - (90 - 32)) // z abuse (Incutex Mini Wireless Presenter)
     ) {
         incremental = activeSlide[querySelector](incrementalSelector + ':not(.' + revealedCls + ')');
         if (incremental) {
@@ -37,23 +37,23 @@ function setPage(newPageNumber) {
         }
         preventDefault = 1;
     }
-    if (keyCodeNormalized == 33 - 32 // pgUp
-            || keyCodeNormalized == 37 - 32 // left
-            || keyCodeNormalized == 38 - 32 // up
-            //|| keyCodeNormalized == 116 - 32 // F5 abuse (Incutex Mini Wireless Presenter)
+    if (!(keyCodeNormalized - (33 - 32)) // pgUp
+            || !(keyCodeNormalized - (37 - 32)) // left
+            || !(keyCodeNormalized - (38 - 32)) // up
+            //|| !(keyCodeNormalized - (116 - 32)) // F5 abuse (Incutex Mini Wireless Presenter)
     ) {
         setPage(currentPageNumber - 1);
         preventDefault = 1;
     }
-    if (keyCodeNormalized == 27 - 32) { // esc
+    if (!(keyCodeNormalized + (-(27 - 32)))) { // esc
         document_body.classList.toggle('muted');
         preventDefault = 1;
     }
-    if (keyCodeNormalized == 36 - 32) { // home
+    if (!(keyCodeNormalized - (36 - 32))) { // home
         setPage(1);
         preventDefault = 1;
     }
-    if (keyCodeNormalized == 35 - 32) { // end
+    if (!(keyCodeNormalized - (35 - 32))) { // end
         setPage(Infinity); // shorter than slides.length, since it gets compressed to 1/0
         preventDefault = 1;
     }

@@ -15,14 +15,19 @@ module.exports = code => {
         return `((${params})=>{${body}})(${args})`;
     });
     // other anonymous functions
-    code = code.replace(/function\(([^)]+)\)\{([^}]+)\}/g, ($, params, body) => {
-        if (/,/.test(params)) {
-            params = `(${params})`;
-        }
-        if (/,/.test(body)) {
-            body = `{${body}}`;
-        }
-        return `${params}=>${body}`;
-    });
+    let oldCode;
+    do {
+        oldCode = code;
+        code = code.replace(/function\(([^)]+)\)\{([^}]+)\}/g, ($, params, body) => {
+            console.log(params);
+            if (/,/.test(params)) {
+                params = `(${params})`;
+            }
+            if (/,/.test(body)) {
+                body = `{${body}}`;
+            }
+            return `${params}=>${body}`;
+        });
+    } while (code !== oldCode);
     return code;
 };

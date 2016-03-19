@@ -3,9 +3,9 @@
 // This is a fragile, wild hack and should NOT be used in serious projects
 module.exports = code => {
     // for…of (not reusable)
-    code = code.replace(/,\w+\.map\.call\(([^,]+),function\((\w+)\)\{([^}]+)}\),/g, ($, list, varName, statement) => {
+    /*code = code.replace(/,\w+\.map\.call\(([^,]+),function\((\w+)\)\{([^}]+)}\),/g, ($, list, varName, statement) => {
         return `;for(${varName} of ${list})${statement};`;
-    });
+    });*/ // currently only Firefox implements iterable NodeLists, so we must stick with .map.call()
     // template strings (works for one variable only)
     code = code.replace(/"([^"]+)"\+(\w+)\+"([^"]+)"/g, ($, before, between, after) => {
         return `\`${before}\$\{${between}\}${after}\``;

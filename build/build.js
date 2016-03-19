@@ -13,7 +13,8 @@ const distDir = `${__dirname}/../dist/`;
 // uglify JS
 let js = pmc(fs.readFileSync(`${srcDir}/minislides.js`, 'utf-8'));
 let minJS = uglify.minify(js, {fromString: true}).code;
-minJS = isogrammify(minJS, 'mIniSlydesFTW_$'); // 'miníslìdeѕ_FTWǃ' looks better but has more bytes per char in utf-8 ಠ_ಠ
+minJS = isogrammify(minJS, 'mIniSlydes_ROCK$'); // 'miníslìdeѕ_ROCKǃ' looks better but has more bytes per char in utf-8 ಠ_ಠ
+minJS = require('./hack-GH-6')(minJS); // FIXME: this is just a hotfix and should be removed GH-6
 fs.writeFileSync(`${distDir}/minislides.min.js`, minJS);
 console.log(minJS);
 console.info(minJS.length);

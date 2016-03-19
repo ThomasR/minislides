@@ -1,4 +1,4 @@
-var slides, currentPageNumber, activeSlide, incremental, keyCodeNormalized,
+var slides, currentPageNumber, activeSlide, incremental, keyCodeNormalized, setPage, processHash,
     revealedCls = 'revealed', incrementalSelector = '.incremental',
     querySelector = 'querySelector', loc = location, doc = document, document_body;
 
@@ -9,16 +9,17 @@ slides = Array.from(doc[querySelector + 'All']('section'));
 * Jump to the given page (1-based) and update location hash
 * @param {number} newPageNumber Should be an integer, some falsy value or Infinity
 */
-function setPage(newPageNumber) {
+setPage = function (newPageNumber) {
     currentPageNumber = Math.min(slides.length, newPageNumber || 1);
     activeSlide = slides[currentPageNumber - 1];
+    // for (let el of activeSlide[querySelector + 'All'](incrementalSelector)) { // not supported by compressors, see GH-6
     slides.map.call(activeSlide[querySelector + 'All'](incrementalSelector), function (el) {
         el.classList.remove(revealedCls);
     });
     loc.hash = currentPageNumber;
     document_body.style.background = activeSlide.dataset.bg || '';
     document_body.dataset.slideId = activeSlide.dataset.id || currentPageNumber;
-}
+};
 
 // Init keyboard navigation
 /*window.*/addEventListener('keydown', function (e, preventDefault) {
@@ -68,12 +69,12 @@ slides.map(function (slide, i) {
 });
 
 // poll location hash
-function processHash(newPageNumber) {
+processHash = function (newPageNumber) {
     newPageNumber = loc.hash.substr(1);
     if (newPageNumber != currentPageNumber) {
         setPage(newPageNumber);
     }
-}
+};
 processHash();
 
 // fade-in presentation

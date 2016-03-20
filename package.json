@@ -24,6 +24,7 @@
     "node": ">=4.0.0"
   },
   "devDependencies": {
+    "chalk": "^1.1.1",
     "clean-css": "^3.4.9",
     "escodegen": "^1.8.0",
     "escope": "^3.4.0",

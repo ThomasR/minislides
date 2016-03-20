@@ -5,32 +5,46 @@
 const proc = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const chalk = require('chalk');
 
 let projectPath = path.resolve(__dirname, '..');
 
+const run = function () {
+    let args = Array.from(arguments);
+    let cmd = args.shift();
+    let result = proc.spawnSync(cmd, args, {
+        encoding: 'utf-8'
+    });
+    //if (result.stdout) {
+    //    console.log(result.stdout);
+    //}
+    if (result.stderr) {
+        console.error(result.stderr);
+    }
+    return result;
+};
+
 const stashAndRun = task => {
     console.info('stashing');
-    proc.spawnSync('git', ['stash']);
+    run('git', 'stash');
     try {
         task();
     } catch(e) {
         console.error(e);
     } finally {
         console.info('unstashing');
-        proc.spawnSync('git', ['stash', 'pop']);
+        run('git', 'stash', 'pop');
     }
 };
 
 const onBranch = (branch, task) => {
-    console.info('checking out', branch, 'branch');
-    proc.spawnSync('git', ['co', branch]);
+    run('git', 'co', branch);
     try {
         task();
     } catch(e) {
         console.error(e);
     } finally {
-        console.info('checking out master branch');
-        proc.spawnSync('git', ['co', 'master']);
+        run('git', 'co', 'master');
     }
 };
 
@@ -40,13 +54,13 @@ stashAndRun(() => {
         let oldHtml = fs.readFileSync(path.resolve(projectPath, 'index.html'), 'utf-8');
         let html = oldHtml.replace(/.+<\/script>/, `<script>${code}</script>`);
         if (html === oldHtml) {
-            console.warn('Nothing to do');
+            console.warn(chalk.magenta('Nothing to do'));
             return;
         }
         console.info('writing file');
         fs.writeFileSync(path.resolve(projectPath, 'index.html'), html, 'utf-8');
-        console.info('committing');
-        proc.spawnSync('git', ['commit', '-a', '-m', 'Update JS']);
-        process.nextTick(() => console.log('\nRemember to run git push --all'));
+        console.info(chalk.green('committing'));
+        run('git', 'commit', '-a', '-m', 'Update JS');
+        process.nextTick(() => console.log(chalk.magenta('\nRemember to run git push --all')));
     });
 });

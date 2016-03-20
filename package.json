@@ -10,7 +10,8 @@
     }
   ],
   "demos": [
-    "dist/minislides-example.html"
+    "dist/minislides-example.html",
+    "https://thomasr.github.io/minislides/"
   ],
   "bugs": {
     "url": "https://github.com/ThomasR/minislides/issues"

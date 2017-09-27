@@ -69,16 +69,14 @@ slides.map(function (slide, i) {
 });
 
 // poll location hash
-processHash = function (newPageNumber) {
+setInterval(processHash = function (newPageNumber) {
     newPageNumber = loc.hash.substr(1);
     if (newPageNumber != currentPageNumber) {
         setPage(newPageNumber);
     }
-};
+}, 99);
 processHash();
 
 // fade-in presentation
 document_body.classList.add('loaded');
 
-// start polling
-setInterval(processHash, 99);
